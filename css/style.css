@@ -1,196 +1,151 @@
-html, body{
-    padding: 0;
+/* ==================================== */
+/* style.css - 桌面端现代简洁风格 (min-width: 800px) */
+/* 统一页眉页脚风格，实现整体协调一致 */
+/* ==================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+/* 定义颜色变量 */
+:root {
+    --primary-color: #41b883; /* 主题色 */
+    --background-light: #ffffff; /* 主体背景 */
+    --background-dark: #f5f5f5; /* 页面背景 */
+    --text-dark: #333333;
+    --warning-color: #e74c3c;
+    --border-light: #dddddd;
+    --border-green: #e9f5e9; /* 接近主题色的浅边框 */
+}
+
+/* 全局样式 - 字体栈优化，提升可读性 */
+body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'SimHei', sans-serif;
+    background-color: var(--background-dark); 
+    color: var(--text-dark);
     margin: 0;
-}
-
-* {
     padding: 0;
-    margin: 0;
+    line-height: 1.8;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-body{
-    font-family: 'Microsoft YaHei';
-    opacity: 0;
-    transition: opacity 1s;
-}
-
-.header{
-    min-width: 1600px;
-    max-width: 1920px;
-    margin: 0 auto;
-    padding: 5px 0;
-    box-shadow: 0 2px 2px rgba(0,0,0,.4);
-    position: relative;
-    z-index: 99;
-	text-align:center;
-}
-
-.header img{
-    height: 86px;
-    width: auto;
-    vertical-align: middle;
-}
-
-
-.content{
-    background: linear-gradient(to bottom, #69a1e6, #215b9e);
-    height: calc(100vh - 96px - 280px);
-    text-align: center;
-    min-height: 490px;
-    position: relative;
-    min-width: 1600px;
-}
-
-.content .main{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    margin-top: -20px;
-    width: 100%;
-}
-
-.content img{
-    height: 280px;
-    width: 350px;
-    vertical-align: middle;
-}
-
-.content .txxx{
-    color: #fff;
-    font-size: 40px;
-    letter-spacing: 4px;
-    margin-top: 15px;
-    text-shadow: 0 2px 2px rgba(0,0,0,.5);
-}
-
-.content .fxtx{
-    line-height: 55px;
-    font-size: 30px;
-    margin-top: 25px;
-    display: inline-block;
-    letter-spacing: 5px;
-    background: rgba(255, 255, 255,.5);
-    padding: 12px 40px;
-    border-radius: 12px;
-}
-
-.content .fxtx span{
-    color: #f00;
-    font-size: 42px;
-}
-
-.content .phone{
-    font-size: 24px;
-    margin-top: 10px;
-    color: #fff;
-}
-
-.content .line{
-    margin: 0 auto;
-    width: 1000px;
-    margin-top: 25px;
-    height: 2px;
-    background: linear-gradient(to right, rgba(255,255,255,.1),rgba(255,255,255,1), rgba(255,255,255,.1));
-}
-
-.footer{
-    min-width: 1600px;
-    height: 90px;
-    text-align: center;
-    padding-top: 10px;
-}
-
-.footer .ewm{
-    width: 120px;
-    height: 120px;
-    margin: 10px 20px 0;
-    padding-bottom: 20px;
-}
-
-.footer .gzh, .footer .app-ewm .title {
-    padding-bottom: 2px;
-}
-
-.footer .gzh, .footer .app-ewm {
-    display: inline-block;
-    padding: 0 20px;
-    position: relative;
-}
- .footer .app-ewm {
-    padding-bottom: 20px;
-}
-
-.footer .gzh{
-    margin-left: 30px;
-}
-
-.footer .gzh:before{
-    content: ' ';
-    display: block;
-    position: absolute;
-    width: 1px;
-    height: 120px;
-    top: 37px;
-    left: -20px;
-    background: rgba(0, 0, 0,.4);
-}
-
-.footer .register{
-    padding-top: 5px;
-    font-size: 14px;
-    margin-top: 15px;
-    border-top: 1px solid rgba(0, 0, 0,.4);
-    line-height: 20px;
-    color: rgba(0,0,0,.7);
-}
-
-.footer .inline-block{
-    display: inline-block;
-    position: relative;
-}
-
-.footer .ts {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.footer a{
-    text-decoration: none;
-    color: rgba(0,0,0,.7);
-}
-
-.footer a:hover{
-    color: #0079ff;
-}
-
-.footer .app-btn{
-    width: 280px;
-    height: 44px;
-    font-size: 24px;
-    color: rgba(255, 255, 255,.85);
-    margin-top: 20px;
-    border-radius: 6px;
-    /* display: flex; */
+/* 头部样式 - 简洁主题色背景，与卡片风格匹配 */
+.header {
+    background-color: var(--primary-color);
+    padding: 15px 50px;
+    /* 头部使用柔和的底部阴影 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    display: flex;
     align-items: center;
+}
+
+.comp-logo {
+    height: 40px;
+    width: auto;
+    /* logo在主题色背景上显示为白色/亮色 */
+    filter: brightness(0) invert(1);
+}
+
+/* 内容区域 - 确保内容居中 */
+.content {
+    flex-grow: 1;
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+}
+
+/* 主卡片 - 保持一致的现代简洁风格 */
+.main {
+    background-color: var(--background-light);
+    border-radius: 10px; 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); 
+    padding: 60px;
+    width: 100%;
+    max-width: 900px; 
+    text-align: center;
+    border: 1px solid var(--border-green); /* 添加一个柔和的边框 */
+    border-top: 5px solid var(--primary-color); /* 顶部强调条 */
+}
+
+/* 提示标题 */
+#txxx {
+    font-size: 1.8em;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+}
+
+/* 分隔线 - 移除 */
+.line {
+    display: none;
+}
+
+/* 风险提示信息 */
+.fxtx {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    font-weight: 400;
+    color: var(--text-dark);
+    line-height: 1.8;
+}
+
+.fxtx span {
+    font-weight: 700;
+    color: var(--warning-color);
+    background-color: #fcecec;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+/* 手机/代理提示信息 */
+.phone {
+    font-size: 1.0em;
+    color: #555;
+    background-color: #f2fff8;
+    border-left: 4px solid var(--primary-color);
+    padding: 15px;
+    margin-top: 30px;
+    border-radius: 4px;
+    font-weight: 300;
+    text-align: left;
+    line-height: 1.7;
+}
+
+/* 底部样式 - 简洁白色背景，与卡片风格匹配 */
+.footer {
+    padding: 15px 0;
+    text-align: center;
+    font-size: 0.85em;
+    color: #888;
+    background-color: var(--background-light); /* 白色背景 */
+    border-top: 1px solid var(--border-light); /* 柔和的上边框 */
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05); /* 柔和的顶部阴影 */
+}
+
+.register {
+    margin: 0 auto;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.register div {
+    display: flex;
     justify-content: center;
-    background-color: #1a73e8;
-    line-height: 1;
-    cursor: pointer;
+    gap: 15px;
 }
 
-.footer .app-btn :hover{
-    opacity: .8;
-}
-.footer .app-btn img{
-    width: 32px;
-    margin-right: 10px;
-    vertical-align: middle;
-    display: inline-block;
+.register a {
+    color: #888;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-.footer .app-btn span{
-    display: inline-block;
-    margin-top: 9px;
+.register a:hover {
+    color: var(--primary-color); 
+    text-decoration: underline;
 }
